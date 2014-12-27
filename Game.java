@@ -131,7 +131,22 @@ public class Game {
       }
     }
 
+    // Checking if grid is full
+    if (isFullGrid())
+      return true;
+
     return false;
+  }
+
+  private boolean isFullGrid() {
+    
+    for (int col = 0; col < WIDTH; col ++) {
+      if (grid[HEIGHT - 1][col] == Piece.EMPTY) {
+        return false;
+      }
+    }
+  
+    return true;
   }
 
   private boolean hasTokenInDirection(Coordinate c, Direction dir) {
@@ -149,6 +164,32 @@ public class Game {
 
     return false;
   }
+  
+  
+  /*
+   * AI player moving... 
+   */
+  public int getAIChoice() {
+
+    int n;
+
+    do {
+    
+      n = (int) (Math.random() * WIDTH);
+
+    } while (!canPlaceToken(n));
+    
+    return n;
+  }
+
+  private Coordinate getBiggestPlayableAlignment(int idPlayer) {
+    
+      return null;
+  }
+
+
+  //private int evaluateGameState() {
+  //}
 
   /*
    * Rendering utils
